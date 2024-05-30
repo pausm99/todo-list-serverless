@@ -28,3 +28,10 @@ export const dbToggleTodoDone = async (id:number) => {
     args: [id]
   })
 }
+
+export const dbDeleteTodo = async (id:number) => {
+  await db.execute({
+    sql: "delete from todos where id = ?",
+    args: [id]
+  })
+}
