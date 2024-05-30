@@ -1,4 +1,6 @@
-import { dbGetTodos } from "@/lib/todos"
+import TodoForm from "@/components/TodoForm";
+import TodoItem from "@/components/TodoItem";
+import { dbGetTodos } from "@/lib/todos";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -6,15 +8,14 @@ export const revalidate = 0;
 export default async function Home() {
   const todos = await dbGetTodos();
 
-  return(
+  return (
     <main className="p-8">
       <h1>Todo list</h1>
-      <form>
-        <input type="text" name="what" className="border border-white p-1 mr-2 rounded"/>
-        <button>Add todo</button>
-      </form>
+      <TodoForm />
       <ul>
-        {todos.map(todo => <li key={todo.id}>{todo.what}</li>)}
+        {todos.map(todo => (
+          <TodoItem key={todo.id} todo={todo}></TodoItem>
+        ))}
       </ul>
     </main>
   )
