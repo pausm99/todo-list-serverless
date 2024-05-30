@@ -27,5 +27,5 @@ body {
 }
 
 h1 {
-  @apply font-bold text-4xl
+  @apply font-bold text-4xl mb-4
 }
